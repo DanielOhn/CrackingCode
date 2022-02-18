@@ -6,6 +6,7 @@ class Node():
     def __repre__(self):
         return self.data
 
+# Single Linked List
 class LinkedList():
     def __init__(self):
         self.head = None
@@ -18,6 +19,20 @@ class LinkedList():
             while node is not None:
                 if (node.next == None):
                     node.next = Node(data=data)
+                    break
+                else:
+                    node = node.next
+    
+    def removeNode(self, data):
+        if (self.head == None):
+            return "There are no nodes in this linked list"
+        else:
+            node = self.head
+            while node is not None:
+                temp = node.next
+                if (temp.data == data):
+                    temp.data = None
+                    node.next = temp.next
                     break
                 else:
                     node = node.next
@@ -38,5 +53,7 @@ linked_list = LinkedList()
 linked_list.addNode(5)
 linked_list.addNode(2)
 linked_list.addNode(4)
+
+linked_list.removeNode(4)
 
 print(repr(linked_list))
