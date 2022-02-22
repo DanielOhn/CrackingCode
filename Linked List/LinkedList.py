@@ -56,6 +56,26 @@ class LinkedList():
                     self.removeNode(node.data)
                     node = node.next
 
+    # Kth to last element
+    def findKth(self, data):
+        if (self.head == None):
+            return "No Nodes in this biiitch"
+        else:
+            node = self.head
+            result = ""
+            found = False
+            while node is not None:
+                if (node.data == data and not found):
+                    result += str(node.data)
+                    found = True
+                elif (found):
+                    result += " > {0}".format(node.data)
+                
+                node = node.next
+        
+            return result
+
+
     def __repr__(self):
         node = self.head
         rslt = ""
@@ -81,5 +101,8 @@ linked_list.addNode(1)
 print(repr(linked_list))
 
 linked_list.removeDuplicates()
+
+getNine = linked_list.findKth(9)
+print(getNine)
 
 print(repr(linked_list))
