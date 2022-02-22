@@ -79,6 +79,31 @@ class LinkedList():
         
             return result
 
+    # Partition a linked list around a value x, such that all nodes less than x come before all nodes greater than or equal to x
+    def partitionNodes(self, val):
+        if (self.head == None):
+            return "Nope"
+        else:
+            node = self.head
+            
+            # Makes these linked list??
+            less = LinkedList()
+            great = LinkedList()
+
+            while node is not None:
+                if (node.data < val):
+                    less.addNode(node.data)
+                elif(node.data >= val):
+                    great.addNode(node.data)
+                
+                node = node.next
+
+            print("Partition Value: {0}".format(val))
+            print(repr(less))
+            print(repr(great))
+
+            return less, great
+
 
     def __repr__(self):
         node = self.head
@@ -110,5 +135,7 @@ getNine = linked_list.findKth(9)
 print(getNine)
 
 linked_list.removeNode(5)
+
+linked_list.partitionNodes(4)
 
 print(repr(linked_list))
