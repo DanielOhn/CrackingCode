@@ -32,7 +32,11 @@ class LinkedList():
             node = self.head
             while node is not None:
                 temp = node.next
-                if (temp.data == data):
+                if (node.data == data):
+                    self.head = node.next
+                    node.data = None
+                    break
+                elif (temp.data == data):
                     temp.data = None
                     node.next = temp.next
                     break
@@ -104,5 +108,7 @@ linked_list.removeDuplicates()
 
 getNine = linked_list.findKth(9)
 print(getNine)
+
+linked_list.removeNode(5)
 
 print(repr(linked_list))
