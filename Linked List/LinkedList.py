@@ -98,12 +98,14 @@ class LinkedList():
                 
                 node = node.next
 
-            print("Partition Value: {0}".format(val))
+            print("\nPartition Value: {0}".format(val))
             print(repr(less))
             print(repr(great))
 
             return less, great
-
+    
+    
+            
 
     def __repr__(self):
         node = self.head
@@ -116,6 +118,52 @@ class LinkedList():
         rslt += "None"
         
         return rslt
+
+# Get two linked lists, reverse order and get them as an integer, then add them and turn the sum to a linked list
+def reverseSum(a, b):
+    aVals = reverseIter(a)
+    bVals = reverseIter(b)
+
+    print("\naVals: ", aVals)
+    print("bVals: ", bVals)
+
+    aVals.reverse()
+    bVals.reverse()
+
+    aInt = ''
+    bInt = ''
+
+    for i in aVals:
+        aInt += str(i)
+
+    for i in bVals:
+        bInt += str(i)
+
+    total = int(aInt) + int(bInt)
+    print("{0} + {1} = {2}".format(aInt, bInt, total))
+
+    result = LinkedList()
+
+    for i in reversed(str(total)):
+        result.addNode(i)
+
+    print(repr(result))
+    return result
+    
+
+def reverseIter(list):
+    node = None
+    rslt = []
+
+    if (list.head == None):
+        return None
+    else:
+        node = list.head
+        while node is not None:
+            rslt.append(node.data)
+            node = node.next
+        
+    return rslt
 
 linked_list = LinkedList()
 linked_list.addNode(5)
@@ -136,6 +184,6 @@ print(getNine)
 
 linked_list.removeNode(5)
 
-linked_list.partitionNodes(4)
+partLists = linked_list.partitionNodes(4)
 
-print(repr(linked_list))
+reverseSum(partLists[0], partLists[1])
