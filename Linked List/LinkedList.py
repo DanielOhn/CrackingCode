@@ -183,6 +183,7 @@ def reverseIter(list):
         
     return rslt
 
+# Check if two linked list have same value at same place
 def intersection(linkA, linkB):
     if (linkA.head == None or linkB.head == None):
         return "One or both linked lists are empty."
