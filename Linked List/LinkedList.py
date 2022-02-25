@@ -1,4 +1,5 @@
 import math
+from tkinter import N
 
 class Node():
     def __init__(self, next=None, data=None):
@@ -182,6 +183,24 @@ def reverseIter(list):
         
     return rslt
 
+def intersection(linkA, linkB):
+    if (linkA.head == None or linkB.head == None):
+        return "One or both linked lists are empty."
+    
+    nodeA = reverseIter(linkA)
+    nodeB = reverseIter(linkB)
+
+    print(nodeA, nodeB)
+
+    for i in range(len(nodeA)):
+        for j in range(len(nodeB)):
+            if (nodeA[i] == nodeB[j] and i == j):
+                return True
+    
+    return False
+
+
+
 linked_list = LinkedList()
 linked_list.addNode(5)
 linked_list.addNode(2)
@@ -209,8 +228,14 @@ newLink = LinkedList()
 newLink.addNode(1)
 newLink.addNode(2)
 newLink.addNode(3)
-newLink.addNode(2)
-newLink.addNode(1)
+
+otherLink = LinkedList()
+otherLink.addNode(4)
+otherLink.addNode(8)
+otherLink.addNode(5)
+
 
 print(repr(newLink))
 print(newLink.checkPalindrome())
+
+print(intersection(newLink, otherLink))
