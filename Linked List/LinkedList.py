@@ -1,3 +1,5 @@
+import math
+
 class Node():
     def __init__(self, next=None, data=None):
         self.next = next
@@ -104,7 +106,22 @@ class LinkedList():
 
             return less, great
     
-    
+    # Check if it's a palindrome
+    def checkPalindrome(self):
+        if (self.head == None):
+            return "Empty linked list"
+        else:
+            values = []
+            node = self.head
+
+            while node is not None:
+                values.append(node.data)
+                node = node.next
+
+            for i in range(math.floor(len(values)/2)):
+                if (values[i] != values[-i-1]):
+                    return False
+        return True
             
 
     def __repr__(self):
@@ -150,7 +167,7 @@ def reverseSum(a, b):
     print(repr(result))
     return result
     
-
+# Helper for reverseSum
 def reverseIter(list):
     node = None
     rslt = []
@@ -187,3 +204,13 @@ linked_list.removeNode(5)
 partLists = linked_list.partitionNodes(4)
 
 reverseSum(partLists[0], partLists[1])
+
+newLink = LinkedList()
+newLink.addNode(1)
+newLink.addNode(2)
+newLink.addNode(3)
+newLink.addNode(2)
+newLink.addNode(1)
+
+print(repr(newLink))
+print(newLink.checkPalindrome())
