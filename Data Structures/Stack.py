@@ -1,7 +1,7 @@
 class Stack():
     def __init__(self):
         self.top = None
-
+        
     class StackNode():
         def __init__(self, data=None, next=None):
             self.data = data
@@ -69,23 +69,23 @@ class MinStack(Stack):
     def min(self):
         return self.small.data
 
-stack = MinStack()
+# stack = MinStack()
 
-print(stack.isEmpty())
+# print(stack.isEmpty())
 
-stack.push(1)
-print(stack.peek())
-stack.push(2)
-stack.push(3)
-stack.push(4)
-stack.push(5)
-stack.push(3.5)
-stack.push(0.5)
-print("Smallest: {}".format(stack.min()))
+# stack.push(1)
+# print(stack.peek())
+# stack.push(2)
+# stack.push(3)
+# stack.push(4)
+# stack.push(5)
+# stack.push(3.5)
+# stack.push(0.5)
+# print("Smallest: {}".format(stack.min()))
 
-print(stack.peek())
-print(repr(stack))
-print(stack.isEmpty())
-stack.pop()
-stack.peek()
-print("Smallest: {}".format(stack.min()))
+# print(stack.peek())
+# print(repr(stack))
+# print(stack.isEmpty())
+# stack.pop()
+# stack.peek()
+# print("Smallest: {}".format(stack.min()))
