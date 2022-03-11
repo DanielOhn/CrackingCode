@@ -57,6 +57,18 @@ class BinaryTree():
             self.inOrderTraversal(node.left)
             self.visit(node)
             self.inOrderTraversal(node.right)
+    
+    def preOrderTraversal(self, node):
+        if (node != None):
+            self.visit(node)
+            self.preOrderTraversal(node.left)
+            self.preOrderTraversal(node.right)
+
+    def postOrderTraversal(self, node):
+        if (node != None):
+            self.postOrderTraversal(node.left)
+            self.postOrderTraversal(node.right)
+            self.visit(node)
 
     def visit(self, node):
         print("{}".format(node.name))
