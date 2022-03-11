@@ -28,7 +28,29 @@ class Tree():
                 break
             elif (c.name < node.name):
                 c = c.right
+
+    # Removes the node and all it's children
+    # NEed to remove just the node and swap out for the children value
+    def remove(self, value):
+        if (self.root == None):
+            return None
+
+        node = self.root
+
+        while node is not None:
+            if (node.left != None):
+                if (node.left.name == value):
+                    node.left = None 
+                    return node.name
+            elif (node.right != None):
+                if (node.right.name == value):
+                    node.right = None 
+                    return node.name
             
+            if (node.name < value):
+                node = node.right
+            if (node.name > value):
+                node = node.left
     
     def inOrderTraversal(self, node):
         if (node != None):
@@ -52,6 +74,10 @@ def createTree():
         num = Node(name=i)
         tree.add(num)
     
+    tree.printTree()
+    print()
+
+    print("REturned: {}".format(tree.remove(9)))
     tree.printTree()
 
 createTree()
