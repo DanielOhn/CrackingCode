@@ -5,7 +5,7 @@ class Node():
         self.right = right
 
 
-class Tree():
+class BinaryTree():
     def __init__(self, root):
         self.root = root
 
@@ -68,7 +68,7 @@ class Tree():
 def createTree():
     nums = [3, 5, 7, 9, 8]
 
-    tree = Tree(Node(name=6))
+    tree = BinaryTree(Node(name=6))
 
     for i in nums:
         num = Node(name=i)
