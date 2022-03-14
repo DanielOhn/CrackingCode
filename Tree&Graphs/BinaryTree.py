@@ -51,6 +51,54 @@ class BinaryTree():
                 node = node.right
             if (node.name > value):
                 node = node.left
+
+    def getMinKey(self, node):
+        while node.left:
+            node = node.left
+        return node
+    
+    def deleteNode(self, key):
+        parent = None
+        curr = self.root
+
+        while curr and curr.name != key:
+            parent = curr
+
+            if key < curr.name:
+                curr = curr.left
+            else:
+                curr = curr.right
+            
+        if curr is None:
+            return self.root
+        
+        if curr.left is None and curr.right is None:
+            if curr != self.root:
+                if parent.left == curr:
+                    parent.left = None
+                else:
+                    parent.right = None
+            else:
+                root = None
+        elif curr.left and curr.right:
+            successor = self.getMinKey(curr.right)
+            val = successor.name
+            self.deleteNode(root, successor.name)
+            curr.name = val
+        else:
+            if curr.left:
+                child = curr.left
+            else:
+                child = curr.right
+            if curr != self.root:
+                if curr == parent.left:
+                    parent.left = child
+                else:
+                    parent.right = child
+            else:
+                self.root = child
+        return self.root
+
     
     def inOrderTraversal(self, node):
         if (node != None):
@@ -87,9 +135,9 @@ def createTree():
         tree.add(num)
     
     tree.printTree()
-    print()
+    print("\n")
 
-    print("REturned: {}".format(tree.remove(9)))
+    tree.deleteNode(9)
     tree.printTree()
 
 createTree()
