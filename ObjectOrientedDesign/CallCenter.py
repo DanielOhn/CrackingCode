@@ -1,6 +1,9 @@
 #Three Levels Employees: respondent, manager, director
 
 # Data Structure for the Employees 
+from contextlib import redirect_stderr
+
+
 class Employee():
     def __init__(self, status, title):
         self.status = status # Available, Not Available
@@ -32,10 +35,28 @@ class CallCenter():
 
     def dispatchCall(self):
         # Assigns call to the first respondent available
-        for i in self.employees():
-            if (i.status == "Available"):
-                i.status = "Unavailable"
-                return
+        for employee in self.employees():
+            if (employee.status == "Available"):
+                employee.status = "Unavailable"
+                return employee
+    
+    def redirectCall(self, employee):
+        next = ""
+
+        if (employee.title == "Respondent"):
+            next = "Manager"
+        elif (employee.title == "Manager"):
+            next = "Director"
+        
+        for e in self.employees:
+            if (e.title == next and e.status == "Available"):
+                return e
+            else:
+                if (next == "Director"):
+                    return None
+                self.redirectCall(next)
+                
+
 
 e = CallCenter()
 e.getEmployees()
