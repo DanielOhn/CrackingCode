@@ -41,5 +41,10 @@ class Reader():
     def turnPage(self, page):
         # Add +1 or -1 page if just going to next page, else go to the specific page
         if (self.selected != None):
-            self.selected.currentPage = page
+            if (self.selected.pages <= page > 0):
+                self.selected.currentPage = page
+            else:
+                print("Invalid page number.")
+        else:
+            print("No book selected.")
 
